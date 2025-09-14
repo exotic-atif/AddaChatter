@@ -1,0 +1,190 @@
+:root {
+  --bg-dark: #0f1720;
+  --card-dark: #0b1220;
+  --muted-dark: #9aa3ad;
+  --accent-dark: #38bdf8;
+  --text-dark: #dbeafe;
+  --bg-light: #f5f7fa;
+  --card-light: #ffffff;
+  --muted-light: #6b7280;
+  --accent-light: #0284c7;
+  --text-light: #1f2937;
+  --bg: var(--bg-dark);
+  --card: var(--card-dark);
+  --muted: var(--muted-dark);
+  --accent: var(--accent-dark);
+  --text: var(--text-dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--bg-light);
+    --card: var(--card-light);
+    --muted: var(--muted-light);
+    --accent: var(--accent-light);
+    --text: var(--text-light);
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 70%, #000));
+  font-family: Inter, system-ui, Arial, sans-serif;
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 300px 1fr;
+    padding: 1.5rem;
+  }
+}
+
+.card {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, #fff), var(--card));
+  padding: 1.25rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.panel input {
+  width: 88%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--muted) 50%, transparent);
+  background: color-mix(in srgb, var(--card) 90%, #000);
+  color: var(--text);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.panel input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--card);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #fff));
+  color: var(--bg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.videos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+.video-wrap {
+  position: relative;
+  background: #000;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.video-wrap:hover {
+  transform: scale(1.02);
+}
+
+video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transform: scaleX(-1)
+}
+
+@media (min-width: 640px) {
+  video {
+    height: 220px;
+  }
+}
+
+.label {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text);
+  transition: background 0.3s ease;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card, .video-wrap {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@media (max-width: 640px) {
+  .panel input, button {
+    font-size: 0.9rem;
+  }
+  .panel input{
+    width: 91%;
+  }
+  .card {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Baler Video Call</title>
+  <link rel="shortcut icon" href="vc.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <main class="card videos">
+      <div class="video-wrap">
+        <video id="local" autoplay muted playsinline></video>
+        <div class="label">You</div>
+      </div>
+      <div id="remotes" class="grid"></div>
+    </main>
+
+    <aside class="panel card">
+      <h1>Realtime Video Call</h1>
+      <label>Room</label>
+      <input id="room" value="room-1">
+      <div class="row">
+        <button id="join">Join</button>
+        <button id="leave">Leave</button>
+      </div>
+      <div class="row">
+        <button id="mute">Mute</button>
+        <button id="cam">Stop Cam</button>
+      </div>
+      <div id="status">Status: idle</div>
+      <p class="muted">Open the same page in other tabs/devices and join the same room.</p>
+    </aside>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
