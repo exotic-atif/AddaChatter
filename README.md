@@ -1,4 +1,4 @@
-# WebRTC Video Call App
+# AddaChatter - A Video Calling App
 
 A simple **peer-to-peer video call app** built with **WebRTC** for media and a lightweight **WebSocket signaling server**.  
 No database, no complex setup — just run and connect two (or more) browsers.
