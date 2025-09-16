@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+* { font-family: "Outfit", sans-serif; }
+
 :root {
   --bg-dark: #0f1720;
   --card-dark: #0b1220;
@@ -27,102 +30,112 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
+  padding: 0;
   background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 70%, #000));
   font-family: Inter, system-ui, Arial, sans-serif;
   color: var(--text);
+  overflow: hidden;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 1rem;
-  box-sizing: border-box;
+.pre-join {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
-  .container {
-    grid-template-columns: 300px 1fr;
-    padding: 1.5rem;
-  }
-}
-
-.card {
+.pre-join-card {
   background: linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, #fff), var(--card));
-  padding: 1.25rem;
+  padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.pre-join-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
-.panel input {
-  width: 88%;
+.pre-join-card h1 {
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+#room {
+  width: 100%;
   padding: 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid color-mix(in srgb, var(--muted) 50%, transparent);
   background: color-mix(in srgb, var(--card) 90%, #000);
   color: var(--text);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-.panel input:focus {
+#room:focus {
   outline: none;
   border-color: var(--accent);
   background: var(--card);
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-
-button {
-  padding: 0.75rem 1.5rem;
+.join-btn {
+  width: 100%;
+  padding: 0.75rem;
   border-radius: 0.5rem;
   border: none;
   background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #fff));
   color: var(--bg);
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-button:hover {
+.join-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-button:active {
+.join-btn:active {
   transform: scale(0.95);
 }
 
-.videos {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.call-view {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
-.grid {
+.videos-container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 80px); /* Account for controls height */
+  background: #000;
+}
+
+.remotes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  width: 100%;
+  height: 100%;
   gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .video-wrap {
@@ -131,6 +144,8 @@ button:active {
   border-radius: 0.75rem;
   overflow: hidden;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .video-wrap:hover {
@@ -139,33 +154,112 @@ button:active {
 
 video {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  transform: scaleX(-1)
+  transform: scaleX(-1);
 }
 
-@media (min-width: 640px) {
-  video {
-    height: 220px;
-  }
-}
+/* .pip-video {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 160px;
+  z-index: 10;
+  border-radius: 0.5rem;
+  border: 2px solid var(--card);
+  background: #000;
+}  */
 
 .label {
   position: absolute;
   left: 0.5rem;
   bottom: 0.5rem;
   background: rgba(0, 0, 0, 0.7);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
   color: var(--text);
-  transition: background 0.3s ease;
+  z-index: 5;
 }
 
-.muted {
-  color: var(--muted);
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 20;
+  border-top: 1px solid var(--muted);
+}
+
+.controls button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #fff));
+  color: var(--bg);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.controls button:active {
+  transform: scale(0.95);
+}
+
+#leave {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.pip-wrapper {
+  position: absolute;
+  bottom: 40px;
+  right: 2rem;
+  width: 120px;
+  height: 160px;
+  z-index: 100;
+  border-radius: 0.5rem;
+  border: 2px solid var(--card);
+  background: #000;
+  overflow: hidden;
+  transform: scaleX(-1); /* apply to wrapper instead of video */
+}
+
+.pip-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.status-wrapper {
+  position: absolute;
+  right: 1.7rem;
+  top: -38rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--text);
   font-size: 0.875rem;
+  z-index: 15;
 }
 
 @keyframes fadeIn {
@@ -173,18 +267,50 @@ video {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card, .video-wrap {
+.video-wrap, .pip-video {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
 @media (max-width: 640px) {
-  .panel input, button {
+  .remotes {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .pip-video {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    }
+
+  
+
+  .controls {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .controls button {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .join-btn {
     font-size: 0.9rem;
   }
-  .panel input{
-    width: 91%;
+
+  .status-wrapper{
+    top: -51rem;
+    right: 1.6rem;
   }
-  .card {
-    padding: 1rem;
+
+  .pip-wrapper{
+    bottom: 10px;
+    right: 0.8rem;
   }
 }

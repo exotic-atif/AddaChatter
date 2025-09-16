@@ -1,42 +1,39 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="google-site-verification" content="Bx5HD9Eu_znSuFJS_6HUk6OiXUCnH9woJssYW0_0dKU" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AddaChatter Video Call</title>
-  <link rel="shortcut icon" href="vc.ico" type="image/x-icon">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div class="container">
-    <main class="card videos">
-      <div class="video-wrap">
-        <video id="local" autoplay muted playsinline></video>
-        <div class="label">You</div>
-      </div>
-      <div id="remotes" class="grid"></div>
-    </main>
-
-    <aside class="panel card">
+  <div id="pre-join" class="pre-join">
+    <div class="pre-join-card">
       <h1>AddaChatter Video Call</h1>
-      <label>Room</label>
-      <input id="room" value="room-1">
-      <div class="row">
-        <button id="join">Join</button>
-        <button id="leave">Leave</button>
-      </div>
-      <div class="row">
-        <button id="mute">Mute</button>
-        <button id="cam">Stop Cam</button>
-      </div>
-      <div id="status">Status: idle</div>
-    </aside>
+      <input type="text" id="room" placeholder="Enter room ID">
+      <button id="join" class="join-btn"><i class="fas fa-video"></i> Join Room</button>
+    </div>
+  </div>
 
+  <div id="call-view" class="call-view" style="display: none;">
+    <div class="videos-container">
+      <div id="remotes" class="remotes"></div>
+        <div class="pip-wrapper">
+          <video id="local" class="pip-video" autoplay muted playsinline></video>
+        </div>
+    </div>
+    <div class="controls">
+      <button id="mute" title="Mute"><i class="fas fa-microphone"></i></button>
+      <button id="cam" title="Stop Camera"><i class="fas fa-video"></i></button>
+      <button id="leave" title="Leave Call"><i class="fas fa-phone-slash"></i></button>
+      <div class="status-wrapper">
+        <span id="status">Status: idle</span>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
